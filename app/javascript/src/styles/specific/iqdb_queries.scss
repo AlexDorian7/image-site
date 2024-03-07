@@ -1,0 +1,12 @@
+div#c-iqdb-queries {
+  div#a-show {
+    article.post-preview {
+      width: 180px;
+      border: $iqdb-post-border solid 1px;
+
+      img {
+        margin-top: 10px;
+      }
+    }
+  }
+}

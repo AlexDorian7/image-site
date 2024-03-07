@@ -1,0 +1,13 @@
+<div id="c-help">
+  <div id="a-edit">
+    <h2>Editing Help Entry</h2>
+    <%= render "form" %>
+  </div>
+</div>
+
+
+<%= render partial: "secondary_links" %>
+
+<% content_for(:page_title) do %>
+  Edit Help Entry - <%= @help.title %>
+<% end %>

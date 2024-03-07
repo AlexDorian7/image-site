@@ -1,0 +1,21 @@
+<div id="c-pools">
+  <div id="a-gallery">
+    <%= render partial: "search", locals: {path: gallery_pools_path} %>
+
+    <%= render "posts/partials/common/inline_blacklist" %>
+
+    <h2>Pools</h2>
+
+    <section>
+      <%= @post_set.presenter.post_previews_html(self) %>
+
+      <%= numbered_paginator(@pools) %>
+    </section>
+  </div>
+</div>
+
+<%= render "secondary_links" %>
+
+<% content_for(:page_title) do %>
+  Pool Gallery
+<% end %>

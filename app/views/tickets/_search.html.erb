@@ -1,0 +1,26 @@
+<%= form_search path: tickets_path do |f| %>
+  <% if CurrentUser.is_moderator? %>
+    <%= f.user :creator, label: "Reporter" %>
+    <%= f.user :accused %>
+    <%= f.user :claimant %>
+    <%= f.input :reason %>
+  <% end %>
+  <%= f.input :qtype, label: "Type", collection: [
+      ["User complaint", "user"],
+      ["Private message complaint", "dmail"],
+      ["Comment complaint", "comment"],
+      ["Forum post complaint", "forum"],
+      ["Blip complaint", "blip"],
+      ["Wiki complaint", "wiki"],
+      ["Pool complaint", "pool"],
+      ["Set complaint", "set"],
+      ["Post complaint", "post"]
+  ], include_blank: true %>
+  <%= f.input :status, collection: [
+      ["Pending + Unclaimed", "pending_unclaimed"],
+      ["Pending + Claimed", "pending_claimed"],
+      ["Approved/investigated", "approved"],
+      ["Under investigation", "partial"],
+      ["Pending", "pending"],
+  ], include_blank: true %>
+<% end %>

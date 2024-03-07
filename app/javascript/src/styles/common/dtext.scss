@@ -1,0 +1,139 @@
+.dtext-container {
+  overflow: hidden;
+  word-wrap: anywhere;
+  overflow-wrap: anywhere;
+}
+
+.styled-dtext {
+  div.spoiler, details, pre, blockquote, ul {
+    margin-bottom: 0.75em;
+  }
+
+  pre, blockquote, .inline-code {
+    padding: $padding-025;
+  }
+
+  details {
+    padding: $padding-050;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1em;
+    margin-bottom: 0.25em;
+
+    &:not(:first-child) {
+      margin-top: 1.25em;
+    }
+  }
+
+  h1 {
+    font-size: $dtext_h1_size;
+  }
+
+  h2 {
+    font-size: $dtext_h2_size;
+  }
+
+  h3 {
+    font-size: $dtext_h3_size;
+  }
+
+  h4 {
+    font-size: $dtext_h4_size;
+  }
+
+  h5 {
+    font-size: $dtext_h5_size;
+  }
+
+  h6 {
+    font-size: $dtext_h6_size;
+  }
+
+  ul {
+    margin-left: 1em;
+
+    ul {
+      margin-bottom: 0;
+    }
+  }
+
+  li {
+    list-style-type: disc;
+  }
+
+  pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 1.2em;
+  }
+
+  .inline-code {
+    font-family: monospace;
+    white-space: pre-wrap;
+    background-color: $dtext-code-background;
+  }
+
+  details {
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+
+      &::marker {
+        font-size: large;
+      }
+    }
+
+    > div {
+      margin-top: 0.75em;
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a.dtext-external-link::after {
+    // https://fontawesome.com/icons/external-link-alt?style=solid
+    @include font-awesome-icon();
+    content: unicode("f35d");
+
+    font-size: 0.6em;
+    padding: 0 0.2em 0 0.3em;
+    vertical-align: 1px;
+  }
+
+  details, pre, blockquote {
+    border-radius: $border-radius-half;
+    border: 1px solid themed("color-section");
+    border-left: 0.25rem solid themed("color-danger");
+    background: themed("color-section-lighten-5");
+  }
+
+  pre {
+    border-left-color: themed("color-dtext-code");
+  }
+
+  blockquote {
+    border-left-color: themed("color-dtext-quote");
+  }
+
+  details {
+    border-left-color: themed("color-dtext-section");
+  }
+
+  @each $tag-category, $tag-category-name in $tag-categories-short {
+    .dtext-color-#{$tag-category} {
+      color: themed("color-tag-#{$tag-category-name}");
+    }
+
+    .dtext-color-#{$tag-category-name} {
+      color: themed("color-tag-#{$tag-category-name}");
+    }
+  }
+}
+
+div.post-thumbnail.dtext {
+  position: relative;
+  display: inline-block;
+}

@@ -1,0 +1,24 @@
+<div id="c-bans">
+  <div id="a-show">
+    <h1>Show Ban</h1>
+    <ul style="margin-bottom: 1em;">
+      <li><strong>User</strong>: <%= link_to_user(@ban.user) %></li>
+      <li><strong>Expires</strong>: <%= @ban.humanized_expiration %></li>
+      <li><strong>Reason</strong>:
+        <div class="dtext-container"><%= format_text @ban.reason %>
+        </div>
+      </li>
+    </ul>
+    <% if CurrentUser.is_moderator? %>
+      <%= form_tag(ban_path(@ban), :method => :delete) do %>
+        <%= submit_tag "Unban" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "secondary_links" %>
+
+<% content_for(:page_title) do %>
+  Ban - <%= @ban.user.name %>
+<% end %>

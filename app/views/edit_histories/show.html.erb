@@ -1,0 +1,32 @@
+<div id="c-edit-history">
+  <div id="a-show">
+    <h1>Edits for <%= h params[:type] %> #<%= h params[:id] %></h1>
+
+    <div class="response-list" id="edit-history">
+      <% @edits.each_with_index do |edit, idx| %>
+        <div class="edit-item box-section">
+          <div class="author">
+            <h6><%= link_to_user edit.user %></h6>
+            <%= compact_time edit.created_at %>
+            <% if CurrentUser.is_admin? %>
+              <div><%= link_to_ip edit.ip_addr %></div>
+            <% end %>
+          </div>
+          <div class="content">
+            <div class="body">
+              <% if edit.version > 1 %>
+                <%= text_diff(@edits[idx-1].body, edit.body) %>
+              <% else %>
+                <div class="original"><%= edit.body %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for(:page_title) do %>
+  Edit History
+<% end %>

@@ -1,0 +1,14 @@
+<div id="c-user-feedbacks">
+  <div id="a-new">
+    <h1>New User Feedback</h1>
+
+    <%= error_messages_for "user_feedback" %>
+    <%= render "form", user_feedback: @user_feedback %>
+  </div>
+</div>
+
+<%= render "secondary_links" %>
+
+<% content_for(:page_title) do %>
+  New Feedback
+<% end %>

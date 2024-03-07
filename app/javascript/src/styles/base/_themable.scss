@@ -1,0 +1,18 @@
+@import "../themes/theme_hexagon";
+@import "../themes/theme_pony";
+@import "../themes/theme_bloodlust";
+@import "../themes/theme_serpent";
+@import "../themes/theme_hotdog";
+
+@import "../themes/extra_none";
+@import "../themes/extra_autumn";
+@import "../themes/extra_winter";
+@import "../themes/extra_spring";
+@import "../themes/extra_aurora";
+@import "../themes/extra_hexagons";
+@import "../themes/extra_space";
+@import "../themes/extra_stars";
+
+@function themed($key) {
+  @return var(--#{$key});
+}
